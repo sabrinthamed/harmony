@@ -13,12 +13,11 @@
     tools:showIn="@layout/activity_main_page_selection">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Show Music"
         android:id="@+id/btnMusic"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="117dp" />
 
     <Button
@@ -27,5 +26,8 @@
         android:text="Coordinate Sheets"
         android:id="@+id/btnCoordinate"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
