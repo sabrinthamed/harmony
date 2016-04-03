@@ -2,6 +2,7 @@ package com.example.jhoang.mysqldemo;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -77,6 +78,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         alertDialog.setMessage(result);
         alertDialog.show();
+        Intent intent = new Intent("com.example.jhoang.mysqldemo.MainPageSelectionActivity");
+        context.startActivity(intent);
     }
 
     @Override

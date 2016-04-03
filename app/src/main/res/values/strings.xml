@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MySQLdemo</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_main_page_selection">MainPageSelectionActivity</string>
+    <string name="title_activity_music_selection">MusicSelectionActivity</string>
+    <string name="title_activity_coordinate_selection">CoordinateSelectionActivity</string>
 </resources>

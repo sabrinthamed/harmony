@@ -22,4 +22,9 @@
     <item android:id="@+id/tuner"
         android:title="Tuner"
         app:showAsAction="never" />
+
+    <item android:id="@+id/switchMain"
+        android:title="switchMain"
+        android:icon="@drawable/ic_queue_music_white_24dp"
+        app:showAsAction="always" />
 </menu>
