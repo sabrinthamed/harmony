@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-//haaaaaaaaaaaaaaaaaaaaa
-//hhhhhhhhhhhh
+
 public class MainActivity extends AppCompatActivity {
 
     EditText UsernameEt, PasswordEt;

@@ -22,6 +22,8 @@ import java.net.URLEncoder;
  */
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
+    String loginsucess="login success!!!!! Welcome user!";
+    String loginfailure="login not successful...";
     Context context;
     BackgroundWorker(Context ctx){
         context = ctx;
@@ -76,10 +78,17 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
-        Intent intent = new Intent("com.example.jhoang.mysqldemo.MainPageSelectionActivity");
-        context.startActivity(intent);
+
+        if(result.equals(loginfailure)) {
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
+
+    else
+        if(result.equals(loginsucess)) {
+            Intent intent = new Intent("com.example.jhoang.mysqldemo.MainPageSelectionActivity");
+            context.startActivity(intent);
+        }
     }
 
     @Override
