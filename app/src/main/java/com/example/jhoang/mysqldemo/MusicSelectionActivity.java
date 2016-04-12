@@ -35,10 +35,18 @@ public class MusicSelectionActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    String username;
+    String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_selection);
+
+        Intent extraIntent = getIntent();
+        username = extraIntent.getStringExtra("username");
+        password = extraIntent.getStringExtra("password");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,13 +77,22 @@ public class MusicSelectionActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.switchMain:
-                Intent intent = new Intent("com.example.jhoang.mysqldemo.CoordinateSelectionActivity");
-                startActivity(intent);
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.switchMain)
+        {
+            Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.CoordinateSelectionActivity");
+            switchIntent.putExtra("username", username);
+            switchIntent.putExtra("password", password);
+            startActivity(switchIntent);
         }
+        else if (id == R.id.notification)
+        {
+            Intent notifyIntent = new Intent(MusicSelectionActivity.this, RecyclerViewList.class);
+            notifyIntent.putExtra("username", username);
+            notifyIntent.putExtra("password", password);
+            startActivity(notifyIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static class PlaceholderFragment extends Fragment {

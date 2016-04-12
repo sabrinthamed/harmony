@@ -5,4 +5,6 @@
     <string name="title_activity_music_selection">MusicSelectionActivity</string>
     <string name="title_activity_coordinate_selection">CoordinateSelectionActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_list_notify">ListNotifyActivity</string>
 </resources>

@@ -14,11 +14,18 @@ import android.widget.Button;
 public class MainPageSelectionActivity extends AppCompatActivity {
     private static Button btnMusic;
     private static Button btnCoordinate;
+    String username;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_selection);
+
+        Intent extraIntent = getIntent();
+        username = extraIntent.getStringExtra("username");
+        password = extraIntent.getStringExtra("password");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         OnClickButtonListener();
@@ -40,6 +47,8 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         Intent intent = new Intent("com.example.jhoang.mysqldemo.MusicSelectionActivity");
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
                         startActivity(intent);
                     }
                 }
@@ -50,6 +59,8 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         Intent intent = new Intent("com.example.jhoang.mysqldemo.CoordinateSelectionActivity");
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
                         startActivity(intent);
                     }
                 }

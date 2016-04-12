@@ -33,29 +33,64 @@
         <activity
             android:name=".MusicSelectionActivity"
             android:label="@string/title_activity_music_selection"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".CoordinateSelectionActivity" >
+            android:parentActivityName=".CoordinateSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.example.jhoang.mysqldemo.MusicSelectionActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"></meta-data>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".CoordinateSelectionActivity"
             android:label="@string/title_activity_coordinate_selection"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MusicSelectionActivity" >
+            android:parentActivityName=".MusicSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.example.jhoang.mysqldemo.CoordinateSelectionActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"></meta-data>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:parentActivityName=".MainPageSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.NotificationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ListNotifyActivity"
+            android:label="@string/title_activity_list_notify"
+            android:parentActivityName=".MainPageSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.ListNotifyActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".RecyclerViewList"></activity>
     </application>
 
 </manifest>

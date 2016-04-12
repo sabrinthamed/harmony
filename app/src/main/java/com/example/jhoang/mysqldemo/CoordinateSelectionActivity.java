@@ -35,6 +35,9 @@ public class CoordinateSelectionActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    String username;
+    String password;
+
     public CoordinateSelectionActivity() {
     }
 
@@ -42,6 +45,11 @@ public class CoordinateSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinate_selection);
+
+        Intent extraIntent = getIntent();
+        username = extraIntent.getStringExtra("username");
+        password = extraIntent.getStringExtra("password");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -73,11 +81,23 @@ public class CoordinateSelectionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.switchMain:
-                Intent intent = new Intent("com.example.jhoang.mysqldemo.MusicSelectionActivity");
-                startActivity(intent);
+                Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.MusicSelectionActivity");
+                switchIntent.putExtra("username", username);
+                switchIntent.putExtra("password", password);
+                startActivity(switchIntent);
+                break;
+
+            case R.id.notification:
+                Intent notifyIntent = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifyIntent.putExtra("username", username);
+                notifyIntent.putExtra("password", password);
+                startActivity(notifyIntent);
+                break;
+
             default:
-                return super.onOptionsItemSelected(item);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public static class PlaceholderFragment extends Fragment {

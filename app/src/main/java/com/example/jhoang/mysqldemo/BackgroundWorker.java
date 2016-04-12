@@ -22,6 +22,8 @@ import java.net.URLEncoder;
  */
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
+    String user_name;
+    String password;
     String loginsucess="login success!!!!! Welcome user!";
     String loginfailure="login not successful...";
     Context context;
@@ -36,8 +38,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String login_url = "http://novaelite4901.com/login.php";
         if(type.equals("login")){
             try {
-                String user_name = params[1];
-                String password = params[2];
+                user_name = params[1];
+                password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -87,6 +89,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     else
         if(result.equals(loginsucess)) {
             Intent intent = new Intent("com.example.jhoang.mysqldemo.MainPageSelectionActivity");
+            intent.putExtra("username", user_name);
             context.startActivity(intent);
         }
     }
