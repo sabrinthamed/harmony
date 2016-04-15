@@ -90,6 +90,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if(result.equals(loginsucess)) {
             Intent intent = new Intent("com.example.jhoang.mysqldemo.MainPageSelectionActivity");
             intent.putExtra("username", user_name);
+            intent.putExtra("password", password);
             context.startActivity(intent);
         }
     }

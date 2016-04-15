@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -42,10 +43,11 @@ public class MainPageSelectionActivity extends AppCompatActivity {
 
     public void OnClickButtonListener() {
         btnMusic = (Button)findViewById(R.id.btnMusic);
+        btnCoordinate = (Button)findViewById(R.id.btnCoordinate);
         btnMusic.setOnClickListener(
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         Intent intent = new Intent("com.example.jhoang.mysqldemo.MusicSelectionActivity");
                         intent.putExtra("username", username);
                         intent.putExtra("password", password);
@@ -53,7 +55,6 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                     }
                 }
         );
-        btnCoordinate = (Button)findViewById(R.id.btnCoordinate);
         btnCoordinate.setOnClickListener(
                 new View.OnClickListener(){
                     @Override
@@ -73,6 +74,22 @@ public class MainPageSelectionActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu_main, menu);
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.notification:
+                Intent notifyIntent = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifyIntent.putExtra("username", username);
+                notifyIntent.putExtra("password", password);
+                startActivity(notifyIntent);
+                break;
+
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

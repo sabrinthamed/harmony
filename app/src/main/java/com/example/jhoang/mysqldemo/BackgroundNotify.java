@@ -1,6 +1,7 @@
 package com.example.jhoang.mysqldemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -31,56 +32,58 @@ public class BackgroundNotify extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override
     protected String doInBackground(String... params) {
-        String notify_url = "http://novaelite4901.com/makeNotify.php";
-        //String login_url = "http://novaelite4901.com/login.php";
-        String method = params[0];
-        if(method.equals("send")){
+        String type = params[0];
+        String login_url = "http://novaelite4901.com/makeNotify.php";
+        if(type.equals("send")){
             try {
                 username = params[1];
                 password = params[2];
                 message = params[3];
-                URL url = new URL(notify_url);
+                URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data = (URLEncoder.encode("username", "UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
-                                    URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"+
-                                    URLEncoder.encode("message","UTF-8")+"="+URLEncoder.encode(message,"UTF-8"));
+                String post_data = (URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"+URLEncoder.encode("message","UTF-8")+"="+URLEncoder.encode(message,"UTF-8"));
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result="";
+                String line;
+                while ((line = bufferedReader.readLine()) != null){
+                    result += line;
+                }
+                bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                return "Message Sent!";
+                return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                return "ERROR 1";
             } catch (IOException e) {
                 e.printStackTrace();
-                return "ERROR 2";
             }
         }
-        return "ERROR 3";
+        return null;
     }
 
     @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
 
     @Override
     protected void onPostExecute(String result) {
         Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
     }
 }

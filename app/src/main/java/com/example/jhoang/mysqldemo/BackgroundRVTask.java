@@ -99,7 +99,7 @@ public class BackgroundRVTask extends AsyncTask<String, Messages, Void> {
                 count++;
                 Messages messages = new Messages(JO.getString("nameStudent"), JO.getInt("teacherID"), JO.getString("msg"));
                 publishProgress(messages);
-                Thread.sleep(1000);
+                Thread.sleep(200);
             }
 
             Log.d("JSON STRING",json_string);

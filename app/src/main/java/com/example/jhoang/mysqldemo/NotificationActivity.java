@@ -1,5 +1,6 @@
 package com.example.jhoang.mysqldemo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class NotificationActivity extends AppCompatActivity {
     EditText MessageEt;
@@ -17,7 +19,7 @@ public class NotificationActivity extends AppCompatActivity {
     String password;
     ListView lv;
     String[] names = {"Jason", "Alex", "Tim"};
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
