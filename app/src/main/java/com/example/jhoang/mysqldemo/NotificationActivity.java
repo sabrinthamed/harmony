@@ -34,8 +34,6 @@ public class NotificationActivity extends AppCompatActivity {
 
         MessageEt = (EditText)findViewById(R.id.etMessage);
 
-        lv = (ListView) findViewById(R.id.listView);
-        lv.setAdapter(new ArrayAdapter<>(NotificationActivity.this, android.R.layout.simple_list_item_1, names));
     }
 
     public void OnNotify(View view){
