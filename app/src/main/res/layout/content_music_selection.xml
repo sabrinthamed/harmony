@@ -18,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="MUSIC PAGE"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="128dp" />
+        android:layout_centerVertical="true" />
+
 </RelativeLayout>

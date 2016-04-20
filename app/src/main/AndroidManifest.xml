@@ -90,7 +90,47 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".RecyclerViewList"></activity>
+        <activity android:name=".RecyclerViewList" />
+        <activity
+            android:name=".Music_BookActivity"
+            android:label="@string/title_activity_music__book"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.Music_BookActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Music_MvtActivity"
+            android:label="@string/title_activity_music__mvt"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.Music_MvtActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Coordinate_BookActivity"
+            android:label="@string/title_activity_coordinate__book"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.Coordinate_BookActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Coordinate_SheetActivity"
+            android:label="@string/title_activity_coordinate__sheet"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.Coordinate_SheetActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
