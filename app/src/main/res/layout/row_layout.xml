@@ -12,17 +12,7 @@
         android:text="Apple"
         android:gravity="center_vertical"
         android:textSize="20dp"
-        android:id="@+id/nameStudent"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:text="Apple"
-        android:gravity="center_vertical"
-        android:textSize="20dp"
-        android:id="@+id/teacherID"
+        android:id="@+id/nameTeacher"
         android:textStyle="bold"/>
 
     <TextView

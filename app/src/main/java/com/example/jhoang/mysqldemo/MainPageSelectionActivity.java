@@ -134,6 +134,11 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
                 break;
+            case R.id.logout:
+                String type = "logout";
+                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                backgroundWorker.execute(type, username, password);
+                break;
 
             default:
                 break;

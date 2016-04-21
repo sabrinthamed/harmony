@@ -47,7 +47,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Recyc
         {
             Messages messages = arrayList.get(position-1);
             holder.Name.setText(messages.getName());
-            holder.Teacher.setText(Integer.toString(messages.getTeacherID()));
             holder.Message.setText(messages.getMessage());
         }
 
@@ -60,15 +59,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Recyc
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder
     {
-        TextView Name,Teacher,Message;
+        TextView Name,Message;
         int viewType;
         public RecyclerViewHolder(View view, int viewType)
         {
             super(view);
             if(viewType == TYPE_LIST)
             {
-                Name = (TextView)view.findViewById(R.id.nameStudent);
-                Teacher = (TextView)view.findViewById(R.id.teacherID);
+                Name = (TextView)view.findViewById(R.id.nameTeacher);
                 Message = (TextView)view.findViewById(R.id.msg);
                 this.viewType = TYPE_LIST;
             }

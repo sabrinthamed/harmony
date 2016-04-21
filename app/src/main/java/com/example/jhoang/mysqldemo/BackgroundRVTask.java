@@ -97,9 +97,9 @@ public class BackgroundRVTask extends AsyncTask<String, Messages, Void> {
             {
                 JSONObject JO = jsonArray.getJSONObject(count);
                 count++;
-                Messages messages = new Messages(JO.getString("nameStudent"), JO.getInt("teacherID"), JO.getString("msg"));
+                Messages messages = new Messages(JO.getString("nameTeacher"), JO.getString("msg"));
                 publishProgress(messages);
-                Thread.sleep(200);
+                Thread.sleep(50);
             }
 
             Log.d("JSON STRING",json_string);

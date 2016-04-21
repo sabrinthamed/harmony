@@ -5,12 +5,10 @@ package com.example.jhoang.mysqldemo;
  */
 public class Messages {
     private String name;
-    private int teacherID;
     private String message;
 
-    public Messages(String name, int teacherID, String message){
+    public Messages(String name, String message){
         this.setName(name);
-        this.setTeacherID(teacherID);
         this.setMessage(message);
     }
 
@@ -20,14 +18,6 @@ public class Messages {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getTeacherID() {
-        return teacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
     }
 
     public String getMessage() {
