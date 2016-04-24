@@ -86,6 +86,11 @@ public class Music_MvtAdapter {
         return cursor;
     }
 
+    public Cursor getAllData(String select) {
+        Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM MUSICMVT_TABLE WHERE SHOWID = ? ", new String[]{select});
+        return res;
+    }
+
     public class SQLiteHelper extends SQLiteOpenHelper {
 
         public SQLiteHelper(Context context, String name,

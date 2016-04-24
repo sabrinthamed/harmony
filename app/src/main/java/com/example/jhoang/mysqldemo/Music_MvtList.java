@@ -26,6 +26,7 @@ public class Music_MvtList extends Activity {
 
     SimpleCursorAdapter cursorAdapter;
     Cursor cursor;
+    String select;
 
     /** Called when the activity is first created. */
     @Override
@@ -40,10 +41,22 @@ public class Music_MvtList extends Activity {
 
         listContent = (ListView)findViewById(R.id.contentlist);
 
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                select= null;
+            } else {
+                select= extras.getString("STRING_I_NEED");
+            }
+        } else {
+            select= (String) savedInstanceState.getSerializable("STRING_I_NEED");
+        }
+
         mySQLiteAdapter = new Music_MvtAdapter(this);
         mySQLiteAdapter.openToWrite();
 
-        cursor = mySQLiteAdapter.queueAll();
+        cursor = mySQLiteAdapter.getAllData(select);
         String[] from = new String[]{Music_MvtAdapter.KEY_ID, Music_MvtAdapter.KEY_CONTENT1, Music_MvtAdapter.KEY_CONTENT2, Music_MvtAdapter.KEY_CONTENT3, Music_MvtAdapter.KEY_CONTENT4};
         int[] to = new int[]{R.id.id, R.id.text1, R.id.text2, R.id.text3, R.id.text4};
         cursorAdapter =

@@ -26,6 +26,7 @@ public class Coordinate_SheetList extends Activity {
 
     SimpleCursorAdapter cursorAdapter;
     Cursor cursor;
+    String select;
 
     /** Called when the activity is first created. */
     @Override
@@ -40,10 +41,21 @@ public class Coordinate_SheetList extends Activity {
 
         listContent = (ListView)findViewById(R.id.contentlist);
 
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                select= null;
+            } else {
+                select= extras.getString("STRING_I_NEED");
+            }
+        } else {
+            select= (String) savedInstanceState.getSerializable("STRING_I_NEED");
+        }
+
         mySQLiteAdapter = new Coordinate_SheetAdapter(this);
         mySQLiteAdapter.openToWrite();
 
-        cursor = mySQLiteAdapter.queueAll();
+        cursor = mySQLiteAdapter.getAllData(select);
         String[] from = new String[]{Coordinate_SheetAdapter.KEY_ID, Coordinate_SheetAdapter.KEY_CONTENT1, Coordinate_SheetAdapter.KEY_CONTENT2, Coordinate_SheetAdapter.KEY_CONTENT3};
         int[] to = new int[]{R.id.id, R.id.text1, R.id.text2, R.id.text3};
         cursorAdapter =

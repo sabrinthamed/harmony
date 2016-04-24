@@ -23,7 +23,6 @@ public class Coordinate_BookList extends Activity {
     private static Button btneditcoordinatebook;
     private Coordinate_BookAdapter mySQLiteAdapter;
     ListView listContent;
-
     SimpleCursorAdapter cursorAdapter;
     Cursor cursor;
 
@@ -109,6 +108,7 @@ public class Coordinate_BookList extends Activity {
             String item_content2 = cursor.getString(cursor.getColumnIndex(Coordinate_BookAdapter.KEY_CONTENT2));
             String item_content3 = cursor.getString(cursor.getColumnIndex(Coordinate_BookAdapter.KEY_CONTENT3));
             Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SheetList");
+            intent.putExtra("STRING_I_NEED",item_content1);
             startActivity(intent);
         }
     };
