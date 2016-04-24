@@ -10,13 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+
 public class Music_MvtActivity extends AppCompatActivity {
     Music_MvtDatabaseHelper myDb;
     EditText editMvtNum, editNameOfMvt,editInstrument,editShowId;
     Button btnAddData;
     Button btnviewAll;
     Button btnDelete;
-
     Button btnviewUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,10 +103,10 @@ public class Music_MvtActivity extends AppCompatActivity {
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Number of Mvt :" + res.getString(0) + "\n");
-                            buffer.append("Name of Mvt :" + res.getString(1) + "\n");
-                            buffer.append("Instrument :" + res.getString(2) + "\n");
-                            buffer.append("Show ID :" + res.getString(3) + "\n\n");
+                            buffer.append("Number of Mvt :" + res.getString(1) + "\n");
+                            buffer.append("Name of Mvt :" + res.getString(2) + "\n");
+                            buffer.append("Instrument :" + res.getString(3) + "\n");
+                            buffer.append("Show ID :" + res.getString(4) + "\n\n");
                         }
 
                         // Show all data

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Music_MvtDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Music_Mvt.db";
-    public static final String TABLE_NAME = "musicmvt_table";
+    public static final String TABLE_NAME = "MUSICMVT_TABLE";
     public static final String COL_1 = "MVTNUM";
     public static final String COL_2 = "NAMEOFMVT";
     public static final String COL_3 = "INSTRUMENT";

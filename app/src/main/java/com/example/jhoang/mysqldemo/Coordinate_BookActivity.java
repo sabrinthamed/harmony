@@ -102,7 +102,7 @@ public class Coordinate_BookActivity extends AppCompatActivity {
                         while (res.moveToNext()) {
                             buffer.append("Show ID :" + res.getString(1) + "\n");
                             buffer.append("Show Name :" + res.getString(2) + "\n");
-                            buffer.append("Number of Mvts :" + res.getString(3) + "\n\n");
+                            buffer.append("Number of Sets :" + res.getString(3) + "\n\n");
                         }
 
                         // Show all data

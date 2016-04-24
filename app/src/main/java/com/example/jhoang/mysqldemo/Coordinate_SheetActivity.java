@@ -100,9 +100,9 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Field Number :" + res.getString(0) + "\n");
-                            buffer.append("Instrument :" + res.getString(1) + "\n");
-                            buffer.append("Show ID :" + res.getString(2) + "\n\n");
+                            buffer.append("Field Number :" + res.getString(1) + "\n");
+                            buffer.append("Instrument :" + res.getString(2) + "\n");
+                            buffer.append("Show ID :" + res.getString(3) + "\n\n");
                         }
 
                         // Show all data

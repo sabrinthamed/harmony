@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Coordinate_BookDatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "Coordinate_BookDatabase.db";
-    public static final String TABLE_NAME = "coordinatebook_table";
+    public static final String DATABASE_NAME = "Coordinate_Book.db";
+    public static final String TABLE_NAME = "COORDINATEBOOK_TABLE";
     public static final String COL_1 = "SHOWID";
     public static final String COL_2 = "SHOWNAME";
     public static final String COL_3 = "NUMSETS";

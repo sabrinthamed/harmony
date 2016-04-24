@@ -19,6 +19,8 @@ public class MainPageSelectionActivity extends AppCompatActivity {
     private static Button btneditmusicmvt;
     private static Button btneditcoordinatebook;
     private static Button btneditcoordinatesheet;
+    private static Button btnMusicBook;
+    private static Button btnCoordinateBook;
 
     String username;
     String password;
@@ -53,6 +55,8 @@ public class MainPageSelectionActivity extends AppCompatActivity {
         btneditmusicmvt = (Button)findViewById(R.id.button_editmusicmvt);
         btneditcoordinatebook = (Button)findViewById(R.id.button_editcoordinatebook);
         btneditcoordinatesheet =(Button)findViewById(R.id.button_editcoordinatesheet);
+        btnMusicBook = (Button)findViewById(R.id.button_musicbook);
+        btnCoordinateBook = (Button)findViewById(R.id.button_coordinatebook);
         btnMusic.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -111,6 +115,26 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SheetActivity");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        btnMusicBook.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        Intent intent = new Intent("com.example.jhoang.mysqldemo.Music_BookList");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        btnCoordinateBook.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_BookList");
                         startActivity(intent);
                     }
                 }

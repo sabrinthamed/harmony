@@ -12,4 +12,10 @@
     <string name="title_activity_music__mvt">Music_MvtActivity</string>
     <string name="title_activity_coordinate__sheet">Coordinate_SheetActivity</string>
     <string name="title_activity_coordinate__book">Coordinate_BookActivity</string>
+    <string name="title_activity_music__book_list">Music_BookList</string>
+    <string name="title_activity_coordinate__book_list">Coordinate_BookList</string>
+    <string name="title_activity_music__mvt_list">Music_MvtList</string>
+    <string name="title_activity_coordinate__sheet_list">Coordinate_Sheet_list</string>
+    <string name="title_activity_music__sheet">Music_Sheet</string>
+    <string name="title_activity_coordinate__set">Coordinate_Set</string>
 </resources>

@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Coordinate_SheetDatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "Coordinate_SheetDatabase.db";
-    public static final String TABLE_NAME = "coordinatesheet_table";
+    public static final String DATABASE_NAME = "Coordinate_Sheet.db";
+    public static final String TABLE_NAME = "COORDINATESHEET_TABLE";
     public static final String COL_1 = "FIELDNUM";
     public static final String COL_2 = "INSTRUMENT";
     public static final String COL_3 = "SHOWID";
