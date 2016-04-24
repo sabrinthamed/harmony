@@ -19,7 +19,7 @@ public class Coordinate_SheetDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (FIELDNUM TEXT PRIMARY KEY,INSTRUMENT TEXT, SHOWID)");
+        db.execSQL("create table " + TABLE_NAME + " (FIELDNUM TEXT PRIMARY KEY,INSTRUMENT TEXT, SHOWID TEXT)");
     }
 
     @Override

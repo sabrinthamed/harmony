@@ -182,11 +182,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Coordinate_Set"
+            android:name=".Coordinate_SetList"
+            android:label="@string/title_activity_coordinate__set_list"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.jhoang.mysqldemo.Coordinate_SetList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Coordinate_SetActivity"
             android:label="@string/title_activity_coordinate__set"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.example.jhoang.mysqldemo.Coordinate_Set" />
+                <action android:name="com.example.jhoang.mysqldemo.Coordinate_SetActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

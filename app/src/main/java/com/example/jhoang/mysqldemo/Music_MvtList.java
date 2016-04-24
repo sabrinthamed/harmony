@@ -122,8 +122,10 @@ public class Music_MvtList extends Activity {
             String item_content1 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT1));
             String item_content2 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT2));
             String item_content3 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT3));
-            String item_content4 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT3));
+            String item_content4 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT4));
             Intent intent = new Intent("com.example.jhoang.mysqldemo.Music_Sheet");
+            intent.putExtra("STRING_I_NEED",item_content1);
+            intent.putExtra("STRING_I_NEED1",item_content4);
             startActivity(intent);
 
         }

@@ -9,10 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Coordinate_SheetActivity extends AppCompatActivity {
+public class Coordinate_SetActivity extends AppCompatActivity {
 
-    Coordinate_SheetDatabaseHelper myDb;
-    EditText editFieldNum,editInstrument,editShowId;
+    Coordinate_SetDatabaseHelper myDb;
+    EditText editNumSet,editFront2Back,editSide2Side,editNumCounts, editMeasures, editFieldNum, editShowId;
     Button btnAddData;
     Button btnviewAll;
     Button btnDelete;
@@ -20,11 +20,15 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinate__sheet);
-        myDb = new Coordinate_SheetDatabaseHelper(this);
-        editFieldNum = (EditText)findViewById(R.id.editText_FieldNum);
-        editInstrument = (EditText)findViewById(R.id.editText_Instrument);
-        editShowId = (EditText)findViewById(R.id.editText_ShowId);
+        setContentView(R.layout.activity_coordinate__set);
+        myDb = new Coordinate_SetDatabaseHelper(this);
+        editNumSet = (EditText)findViewById(R.id.editText_SetNumber);
+        editFront2Back = (EditText)findViewById(R.id.editText_Frount2Back);
+        editSide2Side = (EditText)findViewById(R.id.editText_Side2Side);
+        editNumCounts = (EditText)findViewById(R.id.editText_NumCounts);
+        editMeasures = (EditText)findViewById(R.id.editText_Measures);
+        editFieldNum= (EditText)findViewById(R.id.editText_FieldNum);
+        editShowId= (EditText)findViewById(R.id.editText_ShowId);
         btnAddData = (Button)findViewById(R.id.button_add);
         btnviewAll = (Button)findViewById(R.id.button_viewAll);
         btnviewUpdate= (Button)findViewById(R.id.button_update);
@@ -39,11 +43,11 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Integer deletedRows = myDb.deleteData(editFieldNum.getText().toString());
+                        Integer deletedRows = myDb.deleteData(editNumSet.getText().toString());
                         if(deletedRows > 0)
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data not Deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data not Deleted", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -55,14 +59,18 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         boolean isUpdate = myDb.updateData(
+                                editNumSet.getText().toString(),
+                                editFront2Back.getText().toString(),
+                                editSide2Side.getText().toString(),
+                                editNumCounts.getText().toString(),
+                                editMeasures.getText().toString(),
                                 editFieldNum.getText().toString(),
-                                editInstrument.getText().toString(),
                                 editShowId.getText().toString()
                         );
                         if (isUpdate == true)
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data Update", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data Update", Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data not Updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data not Updated", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -73,14 +81,18 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         boolean isInserted = myDb.insertData(
+                                editNumSet.getText().toString(),
+                                editFront2Back.getText().toString(),
+                                editSide2Side.getText().toString(),
+                                editNumCounts.getText().toString(),
+                                editMeasures.getText().toString(),
                                 editFieldNum.getText().toString(),
-                                editInstrument.getText().toString(),
                                 editShowId.getText().toString()
                         );
                         if (isInserted == true)
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(Coordinate_SheetActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Coordinate_SetActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -100,9 +112,13 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Field Number :" + res.getString(1) + "\n");
-                            buffer.append("Instrument :" + res.getString(2) + "\n");
-                            buffer.append("Show ID :" + res.getString(3) + "\n\n");
+                            buffer.append("Number of Set :" + res.getString(1) + "\n");
+                            buffer.append("Front to Back  :" + res.getString(2) + "\n");
+                            buffer.append("Side to Side :" + res.getString(3) + "\n");
+                            buffer.append("Number of Counts :" + res.getString(4) + "\n");
+                            buffer.append("Measures :" + res.getString(5) + "\n");
+                            buffer.append("Field Number :" + res.getString(6) + "\n");
+                            buffer.append("Show ID :" + res.getString(7) + "\n\n");
                         }
 
                         // Show all data
