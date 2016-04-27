@@ -1,20 +1,15 @@
 package com.example.jhoang.mysqldemo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 public class Music_MvtList extends Activity {
 
@@ -123,7 +118,7 @@ public class Music_MvtList extends Activity {
             String item_content2 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT2));
             String item_content3 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT3));
             String item_content4 = cursor.getString(cursor.getColumnIndex(Music_MvtAdapter.KEY_CONTENT4));
-            Intent intent = new Intent("com.example.jhoang.mysqldemo.Music_Sheet");
+            Intent intent = new Intent("com.example.jhoang.mysqldemo.MusicSelectionActivity");
             intent.putExtra("STRING_I_NEED",item_content1);
             intent.putExtra("STRING_I_NEED1",item_content4);
             startActivity(intent);
