@@ -88,10 +88,16 @@ public class CoordinateSelectionActivity extends AppCompatActivity {
                 break;
 
             case R.id.notification:
-                Intent notifyIntent = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                Intent notifyIntent = new Intent(CoordinateSelectionActivity.this, RecyclerViewList.class);
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
+                break;
+
+            case R.id.logout:
+                String type = "logout";
+                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                backgroundWorker.execute(type, username, password);
                 break;
 
             default:

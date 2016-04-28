@@ -1,15 +1,23 @@
 package com.example.jhoang.mysqldemo;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class Coordinate_BookActivity extends AppCompatActivity {
+
+    String username;
+    String password;
 
     Coordinate_BookDatabaseHelper myDb;
     EditText  editShowId,editShowName,editNumSets;
@@ -22,6 +30,14 @@ public class Coordinate_BookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinate__book);
+
+        Intent extraIntent = getIntent();
+        username = extraIntent.getStringExtra("username");
+        password = extraIntent.getStringExtra("password");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         myDb = new Coordinate_BookDatabaseHelper(this);
 
         editShowId = (EditText)findViewById(R.id.editText_ShowId);
@@ -36,6 +52,44 @@ public class Coordinate_BookActivity extends AppCompatActivity {
         UpdateData();
         DeleteData();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_coordinate, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.switchMain:
+                Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.Music_BookList");
+                switchIntent.putExtra("username", username);
+                switchIntent.putExtra("password", password);
+                startActivity(switchIntent);
+                break;
+
+            case R.id.notification:
+                Intent notifyIntent = new Intent(Coordinate_BookActivity.this, RecyclerViewList.class);
+                notifyIntent.putExtra("username", username);
+                notifyIntent.putExtra("password", password);
+                startActivity(notifyIntent);
+                break;
+
+            case R.id.logout:
+                String type = "logout";
+                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                backgroundWorker.execute(type, username, password);
+                break;
+
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void DeleteData(){
         btnDelete.setOnClickListener(
                 new View.OnClickListener() {
