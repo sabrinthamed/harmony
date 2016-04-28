@@ -148,6 +148,8 @@ public class Coordinate_SetList extends AppCompatActivity {
             String item_content6 = cursor.getString(cursor.getColumnIndex(Coordinate_SetAdapter.KEY_CONTENT6));
             String item_content7 = cursor.getString(cursor.getColumnIndex(Coordinate_SetAdapter.KEY_CONTENT7));
             Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SetActivity");
+            intent.putExtra("username", username);
+            intent.putExtra("password", password);
             startActivity(intent);
         }
     };
