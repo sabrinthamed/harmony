@@ -15,10 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Coordinate_BookActivity extends AppCompatActivity {
-
-    String username;
-    String password;
-
     Coordinate_BookDatabaseHelper myDb;
     EditText  editShowId,editShowName,editNumSets;
     Button btnAddData;
@@ -26,6 +22,10 @@ public class Coordinate_BookActivity extends AppCompatActivity {
     Button btnDelete;
 
     Button btnviewUpdate;
+
+    String username;
+    String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
