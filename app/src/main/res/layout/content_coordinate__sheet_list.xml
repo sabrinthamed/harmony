@@ -31,12 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Edit"
             />
-        <Button
-            android:id="@+id/deleteall"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete All"
-            />
+
         <ListView
             android:id="@+id/contentlist"
             android:layout_width="fill_parent"
