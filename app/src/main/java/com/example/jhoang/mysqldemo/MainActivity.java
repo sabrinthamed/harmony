@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Please Login");
+        toolbar.setTitle("E-Marching Band Student");
         setSupportActionBar(toolbar);
 
         UsernameEt = (EditText)findViewById(R.id.etUsername);
