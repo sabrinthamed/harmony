@@ -24,6 +24,7 @@ public class Coordinate_SetList extends AppCompatActivity {
     Cursor cursor;
     String select;
     String select1;
+    private static Button btnrefresh;
     String username;
     String password;
 
@@ -87,6 +88,20 @@ public class Coordinate_SetList extends AppCompatActivity {
                     public void onClick(View v){
                         Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SetActivity");
                         startActivity(intent);
+                    }
+                }
+        );
+
+        btnrefresh = (Button)findViewById(R.id.refresh);
+        btnrefresh.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent resume = getIntent();
+                        resume.putExtra("username", username);
+                        resume.putExtra("password", password);
+                        finish();
+                        startActivity(resume);
                     }
                 }
         );

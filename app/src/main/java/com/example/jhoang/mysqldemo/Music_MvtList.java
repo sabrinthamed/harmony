@@ -23,6 +23,7 @@ public class Music_MvtList extends AppCompatActivity {
     SimpleCursorAdapter cursorAdapter;
     Cursor cursor;
     String select;
+    private static Button btnrefresh;
     String username;
     String password;
 
@@ -77,6 +78,20 @@ public class Music_MvtList extends AppCompatActivity {
                         intent.putExtra("username", username);
                         intent.putExtra("password", password);
                         startActivity(intent);
+                    }
+                }
+        );
+
+        btnrefresh = (Button)findViewById(R.id.refresh);
+        btnrefresh.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent resume = getIntent();
+                        resume.putExtra("username", username);
+                        resume.putExtra("password", password);
+                        finish();
+                        startActivity(resume);
                     }
                 }
         );

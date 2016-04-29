@@ -31,6 +31,12 @@
             android:layout_height="wrap_content"
             android:text="Edit"
             />
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            />
 
         <ListView
             android:id="@+id/contentlist"

@@ -30,7 +30,7 @@ public class Coordinate_BookList extends AppCompatActivity {
     ListView listContent;
     SimpleCursorAdapter cursorAdapter;
     Cursor cursor;
-
+    private static Button btnrefresh;
     String username;
     String password;
 
@@ -80,6 +80,20 @@ public class Coordinate_BookList extends AppCompatActivity {
                         intent.putExtra("username", username);
                         intent.putExtra("password", password);
                         startActivity(intent);
+                    }
+                }
+        );
+
+        btnrefresh = (Button)findViewById(R.id.refresh);
+        btnrefresh.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent resume = getIntent();
+                        resume.putExtra("username", username);
+                        resume.putExtra("password", password);
+                        finish();
+                        startActivity(resume);
                     }
                 }
         );
