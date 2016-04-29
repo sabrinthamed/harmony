@@ -117,6 +117,8 @@ public class MusicSelectionActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
 
                         Intent intent = new Intent(MusicSelectionActivity.this, DetailActivity.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
                         intent.putParcelableArrayListExtra("data", data);
                         intent.putExtra("pos", position);
                         startActivity(intent);
