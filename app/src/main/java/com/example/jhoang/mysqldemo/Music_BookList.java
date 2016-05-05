@@ -117,13 +117,6 @@ public class Music_BookList extends AppCompatActivity {
                 startActivity(notifyIntent);
                 break;
 
-            case R.id.notificationSend:
-                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
-                notifySend.putExtra("username", username);
-                notifySend.putExtra("password", password);
-                startActivity(notifySend);
-                break;
-
             case R.id.logout:
                 String type = "logout";
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);

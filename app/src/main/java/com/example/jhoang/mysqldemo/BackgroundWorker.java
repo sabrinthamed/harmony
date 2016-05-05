@@ -35,7 +35,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String login_url;
         if(type.equals("login")){
             try {
-                login_url = "http://novaelite4901.com/Tlogin.php";
+                login_url = "http://novaelite4901.com/login.php";
                 user_name = params[1];
                 password = params[2];
                 URL url = new URL(login_url);
