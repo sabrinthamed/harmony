@@ -12,14 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class Coordinate_SheetList extends AppCompatActivity {
 
-    EditText inputContent1, inputContent2;
-    Button buttonAdd, buttonDeleteAll;
     private static Button btneditcoordinatesheet;
     private Coordinate_SheetAdapter mySQLiteAdapter;
     ListView listContent;
@@ -74,9 +71,8 @@ public class Coordinate_SheetList extends AppCompatActivity {
         cursorAdapter =
                 new SimpleCursorAdapter(this, R.layout.coordinate_sheet_item, cursor, from, to);
         listContent.setAdapter(cursorAdapter);
-         listContent.setOnItemClickListener(listContentOnItemClickListener);
+        listContent.setOnItemClickListener(listContentOnItemClickListener);
         OnClickButtonListener();
-
     }
 
     private void OnClickButtonListener() {
@@ -133,6 +129,13 @@ public class Coordinate_SheetList extends AppCompatActivity {
                 startActivity(notifyIntent);
                 break;
 
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
+                break;
+
             case R.id.logout:
                 String type = "logout";
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
@@ -143,6 +146,13 @@ public class Coordinate_SheetList extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        //Refresh your stuff here
     }
 
     private ListView.OnItemClickListener listContentOnItemClickListener
@@ -158,7 +168,7 @@ public class Coordinate_SheetList extends AppCompatActivity {
             String item_content1 = cursor.getString(cursor.getColumnIndex(Coordinate_SheetAdapter.KEY_CONTENT1));
             String item_content2 = cursor.getString(cursor.getColumnIndex(Coordinate_SheetAdapter.KEY_CONTENT2));
             String item_content3 = cursor.getString(cursor.getColumnIndex(Coordinate_SheetAdapter.KEY_CONTENT3));
-            Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SetList");
+            Intent intent = new Intent("com.example.jhoang.mysqldemo.CoordinateSelectionActivity");
             intent.putExtra("username", username);
             intent.putExtra("password", password);
             intent.putExtra("STRING_I_NEED",item_content1);

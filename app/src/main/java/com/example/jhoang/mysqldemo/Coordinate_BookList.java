@@ -47,7 +47,6 @@ public class Coordinate_BookList extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         listContent = (ListView)findViewById(R.id.contentlist);
 
         mySQLiteAdapter = new Coordinate_BookAdapter(this);
@@ -61,7 +60,6 @@ public class Coordinate_BookList extends AppCompatActivity {
         listContent.setAdapter(cursorAdapter);
         listContent.setOnItemClickListener(listContentOnItemClickListener);
         OnClickButtonListener();
-
     }
 
     private void OnClickButtonListener() {
@@ -118,6 +116,13 @@ public class Coordinate_BookList extends AppCompatActivity {
                 startActivity(notifyIntent);
                 break;
 
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
+                break;
+
             case R.id.logout:
                 String type = "logout";
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
@@ -128,6 +133,13 @@ public class Coordinate_BookList extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        //Refresh your stuff here
     }
 
     private ListView.OnItemClickListener listContentOnItemClickListener
@@ -158,10 +170,7 @@ public class Coordinate_BookList extends AppCompatActivity {
         mySQLiteAdapter.close();
     }
 
-
-
     private void updateList(){
         cursor.requery();
     }
-
 }

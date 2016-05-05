@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
 public class Music_MvtActivity extends AppCompatActivity {
     Music_MvtDatabaseHelper myDb;
     EditText editMvtNum, editNameOfMvt,editInstrument,editShowId;
@@ -24,7 +22,6 @@ public class Music_MvtActivity extends AppCompatActivity {
     Button btnviewAll;
     Button btnDelete;
     Button btnviewUpdate;
-
     String username;
     String password;
 
@@ -87,6 +84,13 @@ public class Music_MvtActivity extends AppCompatActivity {
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
+                break;
+
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
                 break;
 
             case R.id.logout:

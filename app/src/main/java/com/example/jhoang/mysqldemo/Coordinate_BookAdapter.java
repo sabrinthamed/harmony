@@ -1,8 +1,5 @@
 package com.example.jhoang.mysqldemo;
 
-/**
- * Created by chong on 4/23/2016.
- */
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

@@ -74,7 +74,6 @@ public class Music_MvtList extends AppCompatActivity {
         listContent.setAdapter(cursorAdapter);
         listContent.setOnItemClickListener(listContentOnItemClickListener);
         OnClickButtonListener();
-
     }
 
     private void OnClickButtonListener() {
@@ -131,6 +130,13 @@ public class Music_MvtList extends AppCompatActivity {
                 startActivity(notifyIntent);
                 break;
 
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
+                break;
+
             case R.id.logout:
                 String type = "logout";
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
@@ -141,6 +147,13 @@ public class Music_MvtList extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        //Refresh your stuff here
     }
 
     private ListView.OnItemClickListener listContentOnItemClickListener
@@ -174,10 +187,7 @@ public class Music_MvtList extends AppCompatActivity {
         mySQLiteAdapter.close();
     }
 
-
-
     private void updateList(){
         cursor.requery();
     }
-
 }

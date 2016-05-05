@@ -1,22 +1,21 @@
 package com.example.jhoang.mysqldemo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class Coordinate_SetList extends AppCompatActivity {
-    
+public class Coordinate_SetList extends Activity {
+
+    EditText inputContent1, inputContent2;
+    Button buttonAdd, buttonDeleteAll;
     private static Button btneditcoordinateset;
     private Coordinate_SetAdapter mySQLiteAdapter;
     ListView listContent;
@@ -25,31 +24,12 @@ public class Coordinate_SetList extends AppCompatActivity {
     Cursor cursor;
     String select;
     String select1;
-    private static Button btnrefresh;
-    String username;
-    String password;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinate__set_list);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        Intent extraIntent = getIntent();
-        username = extraIntent.getStringExtra("username");
-        password = extraIntent.getStringExtra("password");
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
         listContent = (ListView)findViewById(R.id.contentlist);
 
@@ -87,6 +67,14 @@ public class Coordinate_SetList extends AppCompatActivity {
         listContent.setOnItemClickListener(listContentOnItemClickListener);
         OnClickButtonListener();
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     private void OnClickButtonListener() {
@@ -100,59 +88,7 @@ public class Coordinate_SetList extends AppCompatActivity {
                     }
                 }
         );
-
-        btnrefresh = (Button)findViewById(R.id.refresh);
-        btnrefresh.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent resume = getIntent();
-                        resume.putExtra("username", username);
-                        resume.putExtra("password", password);
-                        finish();
-                        startActivity(resume);
-                    }
-                }
-        );
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_coordinate, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.switchMain:
-                Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.Music_BookList");
-                switchIntent.putExtra("username", username);
-                switchIntent.putExtra("password", password);
-                startActivity(switchIntent);
-                break;
-
-            case R.id.notification:
-                Intent notifyIntent = new Intent(Coordinate_SetList.this, RecyclerViewList.class);
-                notifyIntent.putExtra("username", username);
-                notifyIntent.putExtra("password", password);
-                startActivity(notifyIntent);
-                break;
-
-            case R.id.logout:
-                String type = "logout";
-                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                backgroundWorker.execute(type, username, password);
-                break;
-
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     private ListView.OnItemClickListener listContentOnItemClickListener
             = new ListView.OnItemClickListener() {
@@ -172,12 +108,9 @@ public class Coordinate_SetList extends AppCompatActivity {
             String item_content6 = cursor.getString(cursor.getColumnIndex(Coordinate_SetAdapter.KEY_CONTENT6));
             String item_content7 = cursor.getString(cursor.getColumnIndex(Coordinate_SetAdapter.KEY_CONTENT7));
             Intent intent = new Intent("com.example.jhoang.mysqldemo.Coordinate_SetActivity");
-            intent.putExtra("username", username);
-            intent.putExtra("password", password);
             startActivity(intent);
         }
     };
-
 
     @Override
     protected void onDestroy() {

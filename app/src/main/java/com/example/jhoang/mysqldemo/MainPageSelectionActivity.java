@@ -12,12 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainPageSelectionActivity extends AppCompatActivity {
-    private static Button btnMusic;
-    private static Button btnCoordinate;
-    private static Button btneditmusicbook;
-    private static Button btneditmusicmvt;
-    private static Button btneditcoordinatebook;
-    private static Button btneditcoordinatesheet;
+
     private static Button btnMusicBook;
     private static Button btnCoordinateBook;
 
@@ -51,7 +46,6 @@ public class MainPageSelectionActivity extends AppCompatActivity {
 
         btnMusicBook = (Button)findViewById(R.id.button_musicbook);
         btnCoordinateBook = (Button)findViewById(R.id.button_coordinatebook);
-
 
         btnMusicBook.setOnClickListener(
                 new View.OnClickListener(){
@@ -100,11 +94,9 @@ public class MainPageSelectionActivity extends AppCompatActivity {
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
                 backgroundWorker.execute(type, username, password);
                 break;
-
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

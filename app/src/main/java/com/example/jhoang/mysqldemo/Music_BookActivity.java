@@ -22,9 +22,7 @@ public class Music_BookActivity extends AppCompatActivity {
     Button btnAddData;
     Button btnviewAll;
     Button btnDelete;
-
     Button btnviewUpdate;
-
     String username;
     String password;
 
@@ -86,6 +84,13 @@ public class Music_BookActivity extends AppCompatActivity {
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
+                break;
+
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
                 break;
 
             case R.id.logout:
@@ -183,5 +188,4 @@ public class Music_BookActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
-
 }

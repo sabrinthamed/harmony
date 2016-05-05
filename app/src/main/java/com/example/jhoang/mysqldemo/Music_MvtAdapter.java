@@ -1,8 +1,5 @@
 package com.example.jhoang.mysqldemo;
 
-/**
- * Created by chong on 4/23/2016.
- */
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +17,7 @@ public class Music_MvtAdapter {
     public static final String KEY_CONTENT3 = "INSTRUMENT";
     public static final String KEY_CONTENT4 = "SHOWID";
 
+    //create table MY_DATABASE (ID integer primary key, Content text not null);
     private static final String SCRIPT_CREATE_DATABASE =
             "create table " + MYDATABASE_TABLE + " ("
                     + KEY_ID + " integer primary key autoincrement, "
@@ -37,8 +35,6 @@ public class Music_MvtAdapter {
         context = c;
     }
 
-
-
     public Music_MvtAdapter openToWrite() throws android.database.SQLException {
         sqLiteHelper = new SQLiteHelper(context, MYDATABASE_NAME, null, MYDATABASE_VERSION);
         sqLiteDatabase = sqLiteHelper.getWritableDatabase();
@@ -53,7 +49,6 @@ public class Music_MvtAdapter {
         String[] columns = new String[]{KEY_ID, KEY_CONTENT1, KEY_CONTENT2, KEY_CONTENT3, KEY_CONTENT4};
         Cursor cursor = sqLiteDatabase.query(MYDATABASE_TABLE, columns,
                 null, null, null, null, null);
-
         return cursor;
     }
 
@@ -80,7 +75,5 @@ public class Music_MvtAdapter {
             // TODO Auto-generated method stub
 
         }
-
     }
-
 }

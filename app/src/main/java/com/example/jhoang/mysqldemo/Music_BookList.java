@@ -59,11 +59,8 @@ public class Music_BookList extends AppCompatActivity {
         cursorAdapter =
                 new SimpleCursorAdapter(this, R.layout.music_book_item, cursor, from, to);
         listContent.setAdapter(cursorAdapter);
-
         listContent.setOnItemClickListener(listContentOnItemClickListener);
         OnClickButtonListener();
-
-
     }
 
     private void OnClickButtonListener() {
@@ -112,12 +109,21 @@ public class Music_BookList extends AppCompatActivity {
                 switchIntent.putExtra("password", password);
                 startActivity(switchIntent);
                 break;
+
             case R.id.notification:
                 Intent notifyIntent = new Intent(Music_BookList.this, RecyclerViewList.class);
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
                 break;
+
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
+                break;
+
             case R.id.logout:
                 String type = "logout";
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
@@ -152,15 +158,12 @@ public class Music_BookList extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
         mySQLiteAdapter.close();
     }
-
-
 
     private void updateList(){
         cursor.requery();

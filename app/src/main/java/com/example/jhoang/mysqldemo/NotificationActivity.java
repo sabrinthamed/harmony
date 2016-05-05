@@ -15,7 +15,6 @@ public class NotificationActivity extends AppCompatActivity {
     String username;
     String password;
     ListView lv;
-    String[] names = {"Jason", "Alex", "Tim"};
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class NotificationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         MessageEt = (EditText)findViewById(R.id.etMessage);
-
     }
 
     public void OnNotify(View view){
@@ -47,5 +45,4 @@ public class NotificationActivity extends AppCompatActivity {
         BackgroundNotify backgroundNotify = new BackgroundNotify(this);
         backgroundNotify.execute(type, username, password, message);
     }
-
 }

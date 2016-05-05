@@ -23,7 +23,6 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
     Button btnviewAll;
     Button btnDelete;
     Button btnviewUpdate;
-
     String username;
     String password;
 
@@ -32,6 +31,13 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinate__sheet);
 
+        Intent extraIntent = getIntent();
+        username = extraIntent.getStringExtra("username");
+        password = extraIntent.getStringExtra("password");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,13 +45,6 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        Intent extraIntent = getIntent();
-        username = extraIntent.getStringExtra("username");
-        password = extraIntent.getStringExtra("password");
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         myDb = new Coordinate_SheetDatabaseHelper(this);
         editFieldNum = (EditText)findViewById(R.id.editText_FieldNum);
@@ -84,6 +83,13 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
+                break;
+
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
                 break;
 
             case R.id.logout:
@@ -183,5 +189,4 @@ public class Coordinate_SheetActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
-
 }

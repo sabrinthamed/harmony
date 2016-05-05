@@ -1,9 +1,5 @@
 package com.example.jhoang.mysqldemo;
 
-/**
- * Created by RAFI on 4/21/2016.
- */
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,21 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     public ArrayList<ImageModel> data = new ArrayList<>();
@@ -44,9 +30,6 @@ public class DetailActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
     String username;
@@ -63,9 +46,6 @@ public class DetailActivity extends AppCompatActivity {
         Intent extraIntent = getIntent();
         username = extraIntent.getStringExtra("username");
         password = extraIntent.getStringExtra("password");
-
-     //   toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-     //   setSupportActionBar(toolbar);
 
         data = getIntent().getParcelableArrayListExtra("data");
         pos = getIntent().getIntExtra("pos", 0);
@@ -124,7 +104,7 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.switchMain:
-                Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.Coordinate_BookList");
+                Intent switchIntent = new Intent("com.example.jhoang.mysqldemo.Music_BookList");
                 switchIntent.putExtra("username", username);
                 switchIntent.putExtra("password", password);
                 startActivity(switchIntent);
@@ -135,6 +115,13 @@ public class DetailActivity extends AppCompatActivity {
                 notifyIntent.putExtra("username", username);
                 notifyIntent.putExtra("password", password);
                 startActivity(notifyIntent);
+                break;
+
+            case R.id.notificationSend:
+                Intent notifySend = new Intent("com.example.jhoang.mysqldemo.NotificationActivity");
+                notifySend.putExtra("username", username);
+                notifySend.putExtra("password", password);
+                startActivity(notifySend);
                 break;
 
             case R.id.logout:
@@ -149,11 +136,6 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
         public ArrayList<ImageModel> data = new ArrayList<>();
 
@@ -238,6 +220,5 @@ public class DetailActivity extends AppCompatActivity {
 
             return rootView;
         }
-
     }
 }

@@ -1,8 +1,5 @@
 package com.example.jhoang.mysqldemo;
 
-/**
- * Created by chong on 4/23/2016.
- */
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -44,7 +41,6 @@ public class Coordinate_SetAdapter {
         context = c;
     }
 
-
     public Coordinate_SetAdapter openToWrite() throws android.database.SQLException {
         sqLiteHelper = new SQLiteHelper(context, MYDATABASE_NAME, null, MYDATABASE_VERSION);
         sqLiteDatabase = sqLiteHelper.getWritableDatabase();
@@ -54,7 +50,6 @@ public class Coordinate_SetAdapter {
     public void close(){
         sqLiteHelper.close();
     }
-
 
     public Cursor queueAll(){
         String[] columns = new String[]{KEY_ID, KEY_CONTENT1, KEY_CONTENT2, KEY_CONTENT3,KEY_CONTENT4, KEY_CONTENT5, KEY_CONTENT6, KEY_CONTENT7};
@@ -87,7 +82,5 @@ public class Coordinate_SetAdapter {
             // TODO Auto-generated method stub
 
         }
-
     }
-
 }
